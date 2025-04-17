@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Counter</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: #f0f4f8;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    #counter {
+      font-size: 48px;
+      margin: 20px;
+      padding: 20px 40px;
+      background-color: #ffffff;
+      border: 2px solid #007BFF;
+      border-radius: 10px;
+      color: #007BFF;
+      font-weight: bold;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    .increment {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .increment:hover {
+      background-color: #218838;
+    }
+
+    .decrement {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    .decrement:hover {
+      background-color: #c82333;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h2>Interactive Counter</h2>
+
+  <div id="counter">0</div>
+
+  <div>
+    <button class="btn increment" onclick="increment()">Increment</button>
+    <button class="btn decrement" onclick="decrement()">Decrement</button>
+  </div>
+
+  <script>
+    let count = 0;
+
+    function updateDisplay() {
+      document.getElementById("counter").textContent = count;
+    }
+
+    function increment() {
+      count++;
+      updateDisplay();
+    }
+
+    function decrement() {
+      if (count > 0) {
+        count--;
+        updateDisplay();
+      }
+    }
+  </script>
+
+</body>
+</html>

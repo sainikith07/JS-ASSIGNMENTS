@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Scope Example</title>
+</head>
+<body>
+  <h2>Check the Console for Scope Output</h2>
+  <script>
+    // Global Scope
+    let globalVar = "I am global";
+
+    function showGlobal() {
+      console.log("Global Scope:", globalVar); // accessible
+    }
+    showGlobal();
+    console.log("Global Scope (outside function):", globalVar); // accessible
+
+    //  Function (Local) Scope
+    function localScopeExample() {
+      let localVar = "I am local";
+      console.log("Local Scope:", localVar); // accessible
+    }
+    localScopeExample();
+    // console.log(localVar); // Uncommenting this will cause ReferenceError
+
+    //  Block Scope
+    if (true) {
+      let blockVar = "I am block-scoped";
+      const constBlockVar = "Also block-scoped";
+      console.log("Block Scope:", blockVar);
+      console.log("Block Scope with const:", constBlockVar);
+    }
+    // console.log(blockVar); //  ReferenceError
+    // console.log(constBlockVar); // ReferenceError
+
+    // Variable Shadowing
+    let shadowVar = "outer";
+
+    function shadowingExample() {
+      let shadowVar = "inner"; // shadows outer
+      console.log("Shadowed inside function:", shadowVar); // "inner"
+    }
+    shadowingExample();
+    console.log("Original outside function:", shadowVar); // "outer"
+
+    // 'var' is not block-scoped
+    if (true) {
+      var notBlockScoped = "Declared with var";
+    }
+    console.log("var declared in block is accessible:", notBlockScoped); 
+  </script>
+</body>
+</html>

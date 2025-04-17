@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Currency Formatter</title>
+</head>
+<body>
+  <h2>Simple Currency Formatter</h2>
+
+  <button onclick="showFormattedCurrency()">Format ₹1234567.89 (INR)</button>
+
+  <p id="output"></p>
+
+  <script>
+    function formatCurrency(amount, currencyCode) {
+      return new Intl.NumberFormat(undefined, {
+        style: 'currency',
+        currency: currencyCode,
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      }).format(amount);
+    }
+
+    function showFormattedCurrency() {
+      const formatted = formatCurrency(1234567.89, 'INR');
+      document.getElementById('output').textContent = formatted;
+    }
+  </script>
+</body>
+</html>

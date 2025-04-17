@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Library System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background: #f2f2f2;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    pre {
+      background: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <h2>📚 Library System Output</h2>
+  <div id="output"></div>
+
+  <script>
+    // Book class
+    class Book {
+      constructor(title, author, isbn) {
+        this.title = title;
+        this.author = author;
+        this.isbn = isbn;
+        this.isBorrowed = false;
+      }
+
+      borrow() {
+        if (!this.isBorrowed) {
+          this.isBorrowed = true;
+          return `${this.title} has been borrowed.`;
+        } else {
+          return `${this.title} is already borrowed.`;
+        }
+      }
+
+      returnBook() {
+        if (this.isBorrowed) {
+          this.isBorrowed = false;
+          return `${this.title} has been returned.`;
+        } else {
+          return `${this.title} wasn't borrowed.`;
+        }
+      }
+    }
+
+    // Library class
+    class Library {
+      constructor() {
+        this.books = [];
+      }
+
+      addBook(book) {
+        this.books.push(book);
+      }
+
+      findBookByISBN(isbn) {
+        return this.books.find(book => book.isbn === isbn);
+      }
+
+      listAvailableBooks() {
+        return this.books.filter(book => !book.isBorrowed);
+      }
+
+      listBorrowedBooks() {
+        return this.books.filter(book => book.isBorrowed);
+      }
+    }
+
+    // Create library
+    const myLibrary = new Library();
+
+    // Create books
+    const book1 = new Book("The Hobbit", "J.R.R. Tolkien", "1111");
+    const book2 = new Book("1984", "George Orwell", "2222");
+    const book3 = new Book("To Kill a Mockingbird", "Harper Lee", "3333");
+
+    // Add books to library
+    myLibrary.addBook(book1);
+    myLibrary.addBook(book2);
+    myLibrary.addBook(book3);
+
+    // Borrow a book
+    const borrowMessage = book2.borrow();
+
+    // Try to borrow the same book again
+    const secondBorrowAttempt = book2.borrow();
+
+    // Return the book
+    const returnMessage = book2.returnBook();
+
+    // Find a book by ISBN
+    const foundBook = myLibrary.findBookByISBN("3333");
+
+    // List books
+    const availableBooks = myLibrary.listAvailableBooks();
+    const borrowedBooks = myLibrary.listBorrowedBooks();
+
+    // Output
+    const output = `
+${borrowMessage}
+${secondBorrowAttempt}
+${returnMessage}
+
+Found book by ISBN:
+Title: ${foundBook.title}, Author: ${foundBook.author}
+
+Available Books:
+${availableBooks.map(b => `${b.title} by ${b.author}`).join('\n')}
+
+Borrowed Books:
+${borrowedBooks.map(b => `${b.title} by ${b.author}`).join('\n')}
+    `;
+
+    document.getElementById("output").innerHTML = `<pre>${output}</pre>`;
+  </script>
+
+</body>
+</html>

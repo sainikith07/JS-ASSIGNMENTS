@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Evaluate Conditions</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    pre {
+      background-color: #f4f4f4;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h2>JavaScript: evaluateConditions Function</h2>
+  <p>Check the result below and open the browser console for more info.</p>
+  <div id="result"></div>
+
+  <script>
+    function evaluateConditions(obj) {
+      if (obj.age > 18 && obj.hasLicense === true) {
+        return "Eligible to drive";
+      }
+
+      if (obj.temperature > 30 || obj.humidity > 70) {
+        return "Warning: High discomfort level";
+      }
+
+      if ((obj.role === "admin" || obj.role === "editor") && obj.isActive === true) {
+        return "Access granted";
+      }
+
+      if (obj.role === "guest" && obj.canEdit === true) {
+        return "Error: Guests cannot edit";
+      }
+
+      if (obj.shift === "night" && !obj.isAvailable) {
+        return "Night shift worker currently unavailable";
+      }
+
+      if (!obj.isActive || obj.isBanned) {
+        return "Access denied";
+      }
+
+      if (obj.experience > 5 && (obj.performance === "excellent" || obj.performance === "good")) {
+        return "Eligible for promotion";
+      }
+
+      return "No specific condition met";
+    }
+
+    // Sample user object
+    const user = {
+      age: 25,
+      hasLicense: true,
+      temperature: 28,
+      humidity: 65,
+      role: "editor",
+      isActive: true,
+      canEdit: false,
+      shift: "night",
+      isAvailable: false,
+      isBanned: false,
+      experience: 6,
+      performance: "excellent"
+    };
+
+    const output = evaluateConditions(user);
+    console.log("Evaluation Result:", output);
+
+    // Display result on the web page
+    document.getElementById("result").innerHTML = `<pre>${output}</pre>`;
+  </script>
+</body>
+</html>

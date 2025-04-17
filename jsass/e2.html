@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Longest Palindromic Substring</title>
+</head>
+<body>
+
+    <h2>Find Longest Palindromic Substring</h2>
+
+    <input type="text" id="inputText" placeholder="Enter a string" />
+    <button onclick="showLongestPalindrome()">Find Longest Palindrome</button>
+
+    <h3>Longest Palindromic Substring:</h3>
+    <p id="result"></p>
+
+    <script>
+        
+        function findLongestPalindrome(str) {
+            let longest = "";
+
+            
+            for (let start = 0; start < str.length; start++) {
+                for (let end = start + 1; end <= str.length; end++) {
+                    let substring = str.slice(start, end);
+
+                 
+                    if (isPalindrome(substring) && substring.length > longest.length) {
+                        longest = substring;
+                    }
+                }
+            }
+
+            return longest;
+        }
+
+      
+        function isPalindrome(str) {
+            let left = 0;
+            let right = str.length - 1;
+
+           
+                if (str[left] !== str[right]) {
+                    return false;
+                }
+                left++;
+                right--;
+            }
+
+            return true;
+        }
+
+       
+        function showLongestPalindrome() {
+            const input = document.getElementById("inputText").value;
+            const result = findLongestPalindrome(input);
+            document.getElementById("result").textContent = result;
+        }
+    </script>
+
+</body>
+</html>
