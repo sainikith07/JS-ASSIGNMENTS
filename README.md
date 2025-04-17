@@ -1,6 +1,5 @@
 📘 JavaScript Assignments – README
-This document contains a collection of medium to hard JavaScript coding questions designed to test and strengthen a learner's understanding of core programming concepts through real-world problem-solving.
-
+This document contains a collection of medium to hard JavaScript coding questions 
 🔧 Topics Covered:
 Numbers & Math
 
@@ -42,13 +41,4 @@ Transaction processing with balance calculation
 
 Grouping array of objects based on category keys
 
-🎯 Purpose
-This set of assignments is aimed at helping learners:
 
-Solidify their foundational JS knowledge
-
-Practice real-world coding patterns
-
-Gain fluency in DOM manipulation and OOP
-
-Build confidence for interviews and projects
