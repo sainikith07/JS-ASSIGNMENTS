@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Process Transactions</title>
+</head>
+<body>
+  <h2>Transaction Summary</h2>
+  <pre id="output"></pre>
+
+  <script>
+    function processTransactions(transactions) {
+      let balance = 0, deposits = 0, withdrawals = 0;
+
+      for (const tx of transactions) {
+        if (tx.type === 'deposit') {
+          balance += tx.amount;
+          deposits += tx.amount;
+        } else if (tx.type === 'withdrawal') {
+          balance -= tx.amount;
+          withdrawals += tx.amount;
+        }
+      }
+
+      return {
+        finalBalance: balance,
+        totalDeposits: deposits,
+        totalWithdrawals: withdrawals
+      };
+    }
+
+    const transactions = [
+      { type: 'deposit', amount: 1000 },
+      { type: 'withdrawal', amount: 300 },
+      { type: 'deposit', amount: 500 },
+      { type: 'withdrawal', amount: 100 }
+    ];
+
+    const result = processTransactions(transactions);
+
+    document.getElementById("output").textContent =
+      `Final Balance: $${result.finalBalance}\n` +
+      `Total Deposits: $${result.totalDeposits}\n` +
+      `Total Withdrawals: $${result.totalWithdrawals}`;
+  </script>
+</body>
+</html>
