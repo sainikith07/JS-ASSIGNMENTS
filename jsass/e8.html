@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>List Manipulation</title>
+</head>
+<body>
+  <div id="container">
+    <h1>My List</h1>
+    <ul id="myList">
+      <li class="item">Item 1</li>
+      <li class="item">Item 2</li>
+      <li class="item">Item 3</li>
+    </ul>
+    <button id="addButton">Add Item</button>
+  </div>
+
+  <script>
+    const ul = document.getElementById('myList');
+    const addButton = document.getElementById('addButton');
+
+    addButton.addEventListener('click', () => {
+      const li = document.createElement('li');
+      li.textContent = 'New Item';
+      li.className = 'item';
+      ul.appendChild(li);
+    });
+
+    ul.addEventListener('click', (e) => {
+      if (e.target.tagName === 'LI') {
+        e.target.remove();
+      }
+    });
+  </script>
+</body>
+</html>
